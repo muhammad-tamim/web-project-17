@@ -81,7 +81,7 @@ const displayPets = (pets) => {
     <hr class="my-4 text-primary-content/10">
         <div class="flex justify-center md:justify-start items-center gap-4 ">
             <div><button
-                class="btn btn-sm lg:btn-md bg-transparent rounded-lg border border-primary/20  "><i
+                class="like-btn btn btn-sm lg:btn-md bg-transparent rounded-lg border border-primary/20  "><i
                     class="fa-solid fa-thumbs-up"></i></button>
             </div>
             <div><button
@@ -92,6 +92,26 @@ const displayPets = (pets) => {
             </div>
         </div>
         `
+
+        // implement like feature
+        div.querySelector(".like-btn").addEventListener("click", (e) => {
+            // change the like button color
+            const btn = e.target;
+            console.log(btn)
+            btn.classList.remove("bg-transparent")
+            btn.classList.add("bg-primary", "text-white")
+
+            // add liked image to favorite pets container
+            const favoritePetsContainer = document.getElementById("favorite-pets-container")
+
+            const div = document.createElement("div")
+            div.innerHTML = `
+            <img class="size-[124px] object-cover rounded-lg" src=${pet.image} alt="dag">
+            `
+
+            favoritePetsContainer.appendChild(div);
+        })
+
         cardContainer.appendChild(div);
     })
     hideLoadingSpinner()
