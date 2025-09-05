@@ -41,6 +41,7 @@ const displayALlCategoryButtons = (categories) => {
 
 
 const loadAllPets = async () => {
+    showLoadingSpinner()
     const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets");
     const data = await res.json()
     displayPets(data.pets)
@@ -93,4 +94,5 @@ const displayPets = (pets) => {
         `
         cardContainer.appendChild(div);
     })
+    hideLoadingSpinner()
 }
