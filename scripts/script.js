@@ -56,13 +56,13 @@ const displayPets = (pets) => {
         div.classList = "rounded-xl border border-primary-content/10 p-5";
         div.innerHTML = `
          <div class="pb-6">
-        <img class="rounded-lg" src=${pet.image}
+        <img class="rounded-lg w-full h-[160px]" src=${pet.image}
             alt="card pet image">
     </div>
     <div class="space-y-2">
         <h2 class="font-bold text-xl">${pet.pet_name || "Name Not Found"}</h2>
         <div class="flex items-center gap-2">
-            <img src="assets/icons/square.png" alt="square icon">
+            <img  src="assets/icons/square.png" alt="square icon">
                 <p class="text-primary-content/70">Breed: ${pet.breed || "Name Not Found"}</p>
         </div>
         <div class="flex items-center gap-2">
