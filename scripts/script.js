@@ -20,7 +20,16 @@ const displayALlCategoryButtons = (categories) => {
     </div>
     <h2 class="font-bold lg:text-2xl">${category.category}</h2>
     `
+        div.addEventListener("click", () => {
 
+            document.querySelectorAll(".active").forEach((btn) => {
+                btn.classList.add("rounded-xl")
+                btn.classList.remove("rounded-full", "bg-primary/10")
+            })
+
+            div.classList.remove("rounded-xl")
+            div.classList.add("rounded-full", "bg-primary/10")
+        })
 
 
         categoryButtonContainer.appendChild(div);
