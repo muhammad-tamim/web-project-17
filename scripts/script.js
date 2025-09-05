@@ -101,6 +101,8 @@ const displayPets = (pets) => {
             btn.classList.remove("bg-transparent")
             btn.classList.add("bg-primary", "text-white")
 
+            // remove favorite pets container fallback-text
+            document.getElementById("favorite-pets-container-fallback-text").classList.add("hidden")
             // add liked image to favorite pets container
             const favoritePetsContainer = document.getElementById("favorite-pets-container")
 
