@@ -123,6 +123,19 @@ const displayPets = (pets) => {
 
 ## Challenges I faced while Building This Project:
 
+1. I tried lots of time to circle by button using rounded full and lots of others things, but i couldn't make it circle. but while trying i found that DaisyUi btn-circle class, and it's worked.
+
+```js
+<button class="btn btn-sm bg-transparent rounded-full border border-primary/20">
+    <i class="fa-regular fa-user"></i>
+</button>
+```
+```js
+<button class="btn btn-sm bg-transparent btn-circle border border-primary/20">
+    <i class="fa-regular fa-user"></i>
+</button>
+```
+
 ## Contact With Me: 
 
 tamim.muhammad2005@gmail.com | https://www.linkedin.com/in/tamim-muhammad | +8801586090360 (WhatsApp)
