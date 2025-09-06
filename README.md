@@ -121,6 +121,35 @@ const displayPets = (pets) => {
 }
 ```
 
+2. How to implement sort functionality
+
+```js
+document.getElementById("sort-by-price-btn").addEventListener("click", () => {
+    const sortedPets = [...allPetsCollection];
+
+    // selection sort
+    for (let i = 0; i < sortedPets.length; i++) {
+        let minIndex = i;
+
+        // find the index of the smallest element in the remaining array
+        for (let j = i + 1; j < sortedPets.length; j++) {
+            if (sortedPets[j].price < sortedPets[minIndex].price) {
+                minIndex = j;
+            }
+        }
+
+        // swap if we found a smaller price
+        if (minIndex !== i) {
+            let temp = sortedPets[i];
+            sortedPets[i] = sortedPets[minIndex]
+            sortedPets[minIndex] = temp;
+        }
+    }
+
+    displayPets(sortedPets)
+})
+```
+
 ## Challenges I faced while Building This Project:
 
 1. I tried lots of time to circle by button using rounded full and lots of others things, but i couldn't make it circle. but while trying i found that DaisyUi btn-circle class, and it's worked.

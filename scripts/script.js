@@ -166,7 +166,7 @@ const displayPets = (pets) => {
 
         // Implement adopt feature
         div.querySelector(".adopt-btn").addEventListener("click", (e) => {
-            // change the like button color
+            // change the button color
             const btn = e.target;
             btn.classList.remove("bg-transparent")
             btn.classList.add("bg-primary", "text-white")
@@ -177,6 +177,26 @@ const displayPets = (pets) => {
             cartValueContainer.innerText = cartValue + 1;
 
             showToast(`${pet.pet_name} added to the cart`)
+
+
+            // set the data to the Checkout sidebar 
+            const checkoutItemsContainer = document.getElementById("checkout-items-container")
+
+            const checkoutItemsDiv = document.createElement("div");
+
+            checkoutItemsDiv.innerHTML = `
+            <div class="flex justify-between text-primary-content/70 border-b border-primary-content/10 px-3 text-sm">
+                <p>${pet.pet_name}</p>
+                <p>${pet.breed || "Not Found"}</p>
+                <p>${pet.price || 100} $<p>
+            </div>
+            `
+            const price = document.getElementById("total-price").innerText;
+            const convertedTotalPrice = parseInt(price)
+            let sum = convertedTotalPrice + pet.price;
+            document.getElementById("total-price").innerText = sum;
+
+            checkoutItemsContainer.appendChild(checkoutItemsDiv)
         })
 
 
