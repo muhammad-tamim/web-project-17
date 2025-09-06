@@ -58,6 +58,8 @@ const loadAllPets = async () => {
 loadAllPets()
 
 const displayPets = (pets) => {
+    document.getElementById("error-container").classList.add("hidden")
+
 
     if (pets.length === 0) {
         document.getElementById("error-container").classList.remove("hidden")
