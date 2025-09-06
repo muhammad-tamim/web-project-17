@@ -1,13 +1,20 @@
-# Project Name: 
+# Project Name: Peddy
 
 ## Project Description:  
-
-## Live Site Link:
-
-## Project Video:
+Peddy is a pet store website built with HTML, Tailwind CSS, DaisyUI, and JavaScript. I created this project to practice JavaScript, DOM manipulation, event handling, and API fetching.
 
 ## Features:
+In this project, I can:
+- Browse all pets based on different categories.
+- View detailed information about each pet.
+- Add a pet to the cart.
+- Like a pet and add them to the wishlist.
+- View pets sorted by their lowest price using the Sort by Price button
+  
+## Live Site Link:
+https://web-project-17.netlify.app/
 
+## Project Video:
 
 ## What I Learned New while Building This Project:
 
