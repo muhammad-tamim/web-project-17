@@ -134,3 +134,32 @@ const displayPets = (pets) => {
     })
     hideLoadingSpinner()
 }
+
+
+// show checkout sidebar
+document.getElementById("cart-icon").addEventListener("click", () => {
+
+    const checkoutSidebar = document.getElementById("checkout-sidebar");
+
+    checkoutSidebar.classList.remove("hidden");
+
+    setTimeout(() => {
+        checkoutSidebar.classList.remove("translate-x-full");
+        checkoutSidebar.classList.add("translate-x-0");
+    }, 50);
+
+
+})
+
+// Hide checkout sidebar
+document.getElementById("checkout-close-icon").addEventListener("click", () => {
+
+    const checkoutSidebar = document.getElementById("checkout-sidebar");
+
+    checkoutSidebar.classList.add("translate-x-full");
+    checkoutSidebar.classList.remove("translate-x-0");
+
+    setTimeout(() => {
+        checkoutSidebar.classList.add("hidden")
+    }, 500);
+})

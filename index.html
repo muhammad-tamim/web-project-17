@@ -39,9 +39,57 @@
 
 <body class="font-lato text-primary-content">
     <!-- toast -->
-    <div id="toast" class="fixed top-5 right-5 hidden border border-primary/70 
-            py-2 px-5 rounded-lg transform translate-x-full transition-transform duration-500">
+    <div id="toast" class="fixed top-5 right-5 hidden border border-primary-content/10 
+            py-2 px-5 rounded-xl transform translate-x-full transition-transform duration-500">
     </div>
+
+    <!-- Checkout sidebar -->
+    <div id="checkout-sidebar"
+        class="fixed top-0 right-0 z-50 h-[100vw] w-[250px]  rounded-xl bg-gray-100 border border-primary-content/10 hidden transform translate-x-full transition-transform duration-500">
+        <div class="flex justify-between items-center h-[10vh] border-b border-primary-content/10 px-3">
+            <h1 class="font-bold text-2xl">Your Chart</h1>
+            <p id="checkout-close-icon" class="cursor-pointer text-3xl"><i class="fa-solid fa-xmark"></i></p>
+        </div>
+        <div class="bg-primary/05 h-[65vh] overflow-y-auto">
+
+        </div>
+        <div class="flex flex-col justify-between gap-5 pt-2">
+            <div>
+                <div class="join">
+                    <div>
+                        <label class="input validator join-item">
+                            <input type="email" placeholder="Promo Code" required />
+                        </label>
+                        <div class="validator-hint hidden">Promo Code</div>
+                    </div>
+                    <button class="btn btn-primary join-item">Apply</button>
+                </div>
+            </div>
+
+            <div class="flex justify-between border-primary-content/10 font-bold text-xl border-y p-3">
+                <p class="text-primary-content/70">Total:</p>
+                <p>21300</p>
+            </div>
+
+            <div>
+                <button class="btn btn-primary btn-block text-white">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart -->
+    <div tabindex="0" role="button" id="cart-icon"
+        class="btn bg-transparent btn-circle border border-primary/20 fixed right-5 bottom-5 text-primary">
+        <div class="indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span id="cart-value-container" class="badge badge-sm indicator-item">0</span>
+        </div>
+    </div>
+
 
     <header class="max-w-screen-2xl mx-auto px-4 md:px-8 xl:px-[140px]">
         <nav class="flex justify-between items-center py-8 lg:py-14">
@@ -60,7 +108,7 @@
                 <button class="btn  bg-transparent btn-circle border border-primary/20"><i
                         class="fa-regular fa-user"></i>
                 </button>
-                <div tabindex="0" role="button" class="btn  bg-transparent btn-circle border border-primary/20">
+                <!-- <div tabindex="0" role="button" class="btn  bg-transparent btn-circle border border-primary/20">
                     <div class="indicator">
                         <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -69,7 +117,7 @@
                         </svg>
                         <span id="cart-value-container" class="badge badge-sm indicator-item">0</span>
                     </div>
-                </div>
+                </div> -->
         </nav>
 
         <!-- Hero section -->
