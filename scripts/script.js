@@ -60,7 +60,7 @@ const displayPets = (pets) => {
             alt="card pet image">
     </div>
     <div class="space-y-2">
-        <h2 class="font-bold text-xl">${pet.pet_name || "Name Not Found"}</h2>
+        <h2 class="font-bold text-xl">${pet.pet_name}</h2>
         <div class="flex items-center gap-2">
             <img  src="assets/icons/square.png" alt="square icon">
                 <p class="text-primary-content/70">Breed: ${pet.breed || "Name Not Found"}</p>
@@ -85,7 +85,7 @@ const displayPets = (pets) => {
                     class="fa-solid fa-thumbs-up"></i></button>
             </div>
             <div><button
-                class="text-primary btn btn-sm lg:btn-md bg-transparent rounded-lg border border-primary/20   font-bold">Adopt</button>
+                class="adopt-btn text-primary btn btn-sm lg:btn-md bg-transparent rounded-lg border border-primary/20   font-bold">Adopt</button>
             </div>
             <div><button
                 class="text-primary btn btn-sm lg:btn-md bg-transparent rounded-lg border border-primary/20   font-bold">Details</button>
@@ -97,7 +97,6 @@ const displayPets = (pets) => {
         div.querySelector(".like-btn").addEventListener("click", (e) => {
             // change the like button color
             const btn = e.target;
-            console.log(btn)
             btn.classList.remove("bg-transparent")
             btn.classList.add("bg-primary", "text-white")
 
@@ -113,6 +112,23 @@ const displayPets = (pets) => {
 
             favoritePetsContainer.appendChild(div);
         })
+
+
+        // Implement adopt feature
+        div.querySelector(".adopt-btn").addEventListener("click", (e) => {
+            // change the like button color
+            const btn = e.target;
+            btn.classList.remove("bg-transparent")
+            btn.classList.add("bg-primary", "text-white")
+
+            // increase the cart value
+            const cartValueContainer = document.getElementById("cart-value-container")
+            const cartValue = parseInt(cartValueContainer.innerText)
+            cartValueContainer.innerText = cartValue + 1;
+
+            showToast(`${pet.pet_name} added to the cart`)
+        })
+
 
         cardContainer.appendChild(div);
     })
