@@ -88,7 +88,7 @@ const displayPets = (pets) => {
                 class="adopt-btn text-primary btn btn-sm lg:btn-md bg-transparent rounded-lg border border-primary/20   font-bold">Adopt</button>
             </div>
             <div><button
-                class="text-primary btn btn-sm lg:btn-md bg-transparent rounded-lg border border-primary/20   font-bold">Details</button>
+                class="details-btn text-primary btn btn-sm lg:btn-md bg-transparent rounded-lg border border-primary/20   font-bold">Details</button>
             </div>
         </div>
         `
@@ -130,6 +130,12 @@ const displayPets = (pets) => {
         })
 
 
+        // details modal
+        div.querySelector(".details-btn").addEventListener("click", () => {
+            document.getElementById("my-modal").showModal()
+            loadPetsDetails(pet.petId)
+        })
+
         cardContainer.appendChild(div);
     })
     hideLoadingSpinner()
@@ -163,3 +169,53 @@ document.getElementById("checkout-close-icon").addEventListener("click", () => {
         checkoutSidebar.classList.add("hidden")
     }, 500);
 })
+
+
+const loadPetsDetails = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/peddy/pet/${id}`
+    const res = await fetch(url)
+    const data = await res.json()
+    displayModalInfo(data.petData)
+}
+
+const displayModalInfo = (petData) => {
+    const modalInfoContainer = document.getElementById("modal-info-container")
+
+    modalInfoContainer.innerHTML = "";
+
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+        <div class="pb-6">
+            <img class="w-full h-[280px] object-center rounded-lg" src=${petData.image} alt="">
+        </div>
+        <div>
+            <h1 class="font-bold text-2xl pb-4">${petData.pet_name || "Name Not Found"}</h1>
+            <div class="grid grid-cols-2 justify-start gap-1">
+                <div class="flex items-center gap-2">
+                    <img src="assets/icons/square.png" alt="square icon">
+                    <p class="text-primary-content/70">Breed: ${petData.breed}</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <img src="assets/icons/calender.png" alt="calender icon">
+                    <p class="text-primary-content/70">Birth: ${petData.date_of_birth}</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <img src="assets/icons/gender.png" alt="gender icon">
+                    <p class="text-primary-content/70">Gender: ${petData.gender}</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <img src="assets/icons/dollar.png" alt="dollar icon">
+                    <p class="text-primary-content/70">Price: ${petData.price}$</p>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4 text-primary-content/10">
+        <div class="pb-4">
+            <h1 class="font-semibold pb-2">Details Information</h1>
+            <p class="text-primary-content/70">${petData.pet_details}</p>
+        </div>
+    `;
+
+    modalInfoContainer.appendChild(div)
+}
