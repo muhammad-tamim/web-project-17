@@ -32,6 +32,14 @@ const displayALlCategoryButtons = (categories) => {
         })
 
 
+        // fetch category data
+        div.addEventListener("click", () => {
+            const url = (`https://openapi.programming-hero.com/api/peddy/category/${category.category}`)
+            fetch(url)
+                .then(res => res.json())
+                .then(data => displayPets(data.data))
+        })
+
         categoryButtonContainer.appendChild(div);
 
     });
@@ -50,6 +58,8 @@ loadAllPets()
 
 const displayPets = (pets) => {
     const cardContainer = document.getElementById("card-container");
+
+    cardContainer.innerHTML = "";
 
     pets.forEach((pet) => {
         const div = document.createElement("div");
