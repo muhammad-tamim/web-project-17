@@ -48,14 +48,46 @@ const displayALlCategoryButtons = (categories) => {
 }
 
 
+let allPetsCollection = [];
 
 const loadAllPets = async () => {
     showLoadingSpinner()
     const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets");
     const data = await res.json()
+    allPetsCollection = data.pets;
     displayPets(data.pets)
 }
 loadAllPets()
+
+
+
+// implement sort by price 
+document.getElementById("sort-by-price-btn").addEventListener("click", () => {
+    const sortedPets = [...allPetsCollection];
+
+    // selection sort
+    for (let i = 0; i < sortedPets.length; i++) {
+        let minIndex = i;
+
+        // find the index of the smallest element in the remaining array
+        for (let j = i + 1; j < sortedPets.length; j++) {
+            if (sortedPets[j].price < sortedPets[minIndex].price) {
+                minIndex = j;
+            }
+        }
+
+        // swap if we found a smaller price
+        if (minIndex !== i) {
+            let temp = sortedPets[i];
+            sortedPets[i] = sortedPets[minIndex]
+            sortedPets[minIndex] = temp;
+        }
+    }
+
+    displayPets(sortedPets)
+})
+
+
 
 const displayPets = (pets) => {
     document.getElementById("error-container").classList.add("hidden")
@@ -93,7 +125,7 @@ const displayPets = (pets) => {
         </div>
         <div class="flex items-center gap-2">
             <img src="assets/icons/dollar.png" alt="square icon">
-                <p class="text-primary-content/70">Price : ${pet.price}$</p>
+                <p class="text-primary-content/70">Price : ${pet.price || 100}$</p>
         </div>
     </div>
     <hr class="my-4 text-primary-content/10">
