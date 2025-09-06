@@ -34,6 +34,7 @@ const displayALlCategoryButtons = (categories) => {
 
         // fetch all category data by category name
         div.addEventListener("click", () => {
+            showLoadingSpinner()
             const url = (`https://openapi.programming-hero.com/api/peddy/category/${category.category}`)
             fetch(url)
                 .then(res => res.json())
